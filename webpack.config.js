@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "My App",
+      title: "AGO JSON UTILS",
       template: "./assets/main.html"
     })
   ],

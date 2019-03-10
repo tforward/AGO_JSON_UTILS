@@ -1,5 +1,8 @@
 "use strict";
+
 import css_ from "../css/styles.css";
+import { configJson, log } from "./jsonUtily";
+import { sampleJson } from "./sampleData";
 
 const myApp = Object.create(null);
 // ======================================================================
@@ -7,7 +10,9 @@ const myApp = Object.create(null);
 // ======================================================================
 
 myApp.main = function main() {
-	// Start here
+  const layerToConfig = "Wastewater_7520";
+  const result = configJson(layerToConfig, sampleJson);
+  log(result);
 };
 
 // Handler when the DOM is fully loaded
@@ -15,7 +20,7 @@ document.onreadystatechange = function onreadystatechange() {
   if (document.readyState === "complete") {
     myApp.main();
   } else {
-    // Do something during loading [opitional]
+    // Do something during loading [optional]
   }
 };
 

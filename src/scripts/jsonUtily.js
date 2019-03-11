@@ -4,13 +4,20 @@ export function log(data) {
   console.log(data);
 }
 
-export function configJson(layername, data) {
-  // May need check if no operationlayer user "layers"
-  const hasLayerName = R.has(layername);
-
-  const x = R.pick(["operationalLayers"], data);
-
-  return x;
+export function configJson(lyrName, data) {
+  const lyrGroup = rtnLayerGroup(data);
+  return R.find(R.propEq("id", lyrName))(data[lyrGroup]);
 }
 
-function accessLayerJson(id, data) {}
+function rtnLayerGroup(data) {
+  const hasOpsLayers = R.has("operationalLayers");
+  const hasLayers = R.has("layers");
+
+  if (hasOpsLayers(data)) {
+    return "operationalLayers";
+  }
+  if (hasLayers(data)) {
+    return "layers";
+  }
+  return false;
+}

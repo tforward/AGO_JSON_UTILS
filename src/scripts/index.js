@@ -10,8 +10,8 @@ const myApp = Object.create(null);
 // ======================================================================
 
 myApp.main = function main() {
-  const layerToConfig = "Wastewater_7520";
-  const result = configJson(layerToConfig, sampleJson);
+  const layerName = "Wastewater_7520";
+  const result = configJson(layerName, sampleJson);
   log(result);
 };
 
